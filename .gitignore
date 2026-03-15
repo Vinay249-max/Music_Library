@@ -1,0 +1,22 @@
+# Dependency directories
+node_modules/
+
+# Environment variables
+.env
+.env.*
+
+# Build output
+build/
+dist/
+
+# Backend uploads
+backend/uploads/
+uploads/
+
+# Cypress generated
+cypress/videos/
+cypress/screenshots/
+
+# OS generated files
+.DS_Store
+Thumbs.db
