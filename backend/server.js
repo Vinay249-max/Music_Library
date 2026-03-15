@@ -39,30 +39,14 @@ uploadDirs.forEach(dir => {
   }
 });
 
-// Only connect and listen when this file is run directly (not during tests)
-// if (require.main === module) {
-//   mongoose.connect(process.env.MONGO_URI)
-//     .then(() => {
-//       console.log('MongoDB connected');
-//       app.listen(process.env.PORT, () =>
-//         console.log(`Server running on port ${process.env.PORT}`)
-//       );
-//     })
-//     .catch(err => console.log(err));
-// }
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('MongoDB connected');
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch(err => console.log(err));
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-const server = http.createServer(app);
-
-const wss = new WebSocketServer({ server });
-initWebSocket(wss);
-
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-  console.log(`WebSocket server is ready`);
-});
-// module.exports = app;
+module.exports = app;

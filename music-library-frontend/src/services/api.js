@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: 'https://music-library-unzc.onrender.com' });
+const api = axios.create({ baseURL: 'https://music-library-unzc.onrender.com/api' });
 
 // ── Request: attach JWT from localStorage ──────────────────────────
 api.interceptors.request.use(
